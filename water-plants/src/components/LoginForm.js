@@ -75,7 +75,7 @@ export default function LoginForm () {
 
     return (
         <form onSubmit={formSubmit}>
-            <label html="userName">Username</label>
+            <label html="userName">Username:</label>
             <input
                 type="text"
                 name="userName"
@@ -85,7 +85,7 @@ export default function LoginForm () {
                 placeholder="Enter Username"
                 />
                 {errorState.userName.length > 0 ? (<p>{errorState.userName}</p>) : null}
-            <label html="password">Password</label>
+            <label html="password">Password:</label>
             <input
                 type="text"
                 name="password"
