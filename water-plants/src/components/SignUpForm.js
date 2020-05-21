@@ -5,7 +5,7 @@ import axios from "axios";
 const formSchema = yup.object().shape({
     userName: yup
         .string()
-        .min(3, "Username must be at least 3 characters long")
+        .min(4, "Username must be at least 4 characters long")
         .required("Please create a Username"),
     mobilePhone: yup
         .string()
@@ -89,7 +89,7 @@ export default function SignUpForm () {
                 id="userName"
                 value={formState.userName}
                 onChange={inputChange}
-                placeholer="Please create your Username"
+                placeholder="Please create your Username"
                 />
                 {errorState.userName.length > 0 ? (<p>{errorState.userName}</p>) : null}
             <label htmlFor="mobileNumber">
@@ -101,7 +101,7 @@ export default function SignUpForm () {
                 id="mobilePhone"
                 value={formState.mobilePhone}
                 onChange={inputChange}
-                placeholer="(xxx)xxx-xxxx"
+                placeholder="(xxx)xxx-xxxx"
                 />
                 {errorState.mobilePhone.length > 0 ? (<p>{errorState.mobilePhone}</p>) : null}
             <label htmlFor="password">
@@ -113,10 +113,10 @@ export default function SignUpForm () {
                 id="password"
                 value={formState.password}
                 onChange={inputChange}
-                placeholer="Please create your Username"
+                placeholder="Please create your Password"
                 />
                 {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null} 
-            <button disabled={buttonDisabled}>Create your Account Now</button>
+            <button disabled={buttonDisabled}>Create  Account</button>
         </form>
     )
 }
