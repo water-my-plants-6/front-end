@@ -6,8 +6,14 @@ const PlantList = props => {
             {props.plants.map(plant =>
                 <div key={plant.id}>
                     <p>Nickname of Plant: {plant.nickname}</p>
+                    <button>View</button>
+                    <button>Delete</button>
                     <p>Species of Plant: {plant.species}</p>
+                    <button>View</button>
+                    <button>Delete</button>
                     <p>Water Frequency: {plant.h2oFrequency}</p>
+                    <button>View</button>
+                    <button>Delete</button>
                 </div>
                 )}
         </div>

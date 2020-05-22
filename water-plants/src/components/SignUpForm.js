@@ -8,7 +8,9 @@ const formSchema = yup.object().shape({
         .min(4, "Username must be at least 4 characters long")
         .required("Please create a Username"),
     mobilePhone: yup
-        .string()
+        .number()
+        .min(10, "Must be a 10 digit number")
+        .typeError("Must enter a valid phone number")
         .required("Must enter valid Mobile Phone Number"),
     password: yup
         .string()
@@ -26,7 +28,7 @@ export default function SignUpForm () {
 
     useEffect(()=> {
         formSchema.isValid(formState).then(valid => {
-            setButtonDisabled();
+            setButtonDisabled(!valid);
         })
     }, [formState]);
 

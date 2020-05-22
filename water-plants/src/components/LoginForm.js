@@ -22,7 +22,7 @@ export default function LoginForm () {
 
     useEffect(()=> {
         formSchema.isValid(formState).then(valid => {
-            setButtonDisabled();
+            setButtonDisabled(!valid);
         })
     }, [formState]);
 
