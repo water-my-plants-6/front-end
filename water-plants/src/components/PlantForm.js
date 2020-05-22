@@ -16,11 +16,11 @@ const PlantForm = props => {
     }
 
     return(
-        <form onSubmit = {event => {
+        <form onSubmit={event =>{
             event.preventDefault()
             props.addPlant(plant)
 
-            setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
+            setPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
         }} >
             <label htmlFor="nickname">Nickname your Plant: </label>
             <input
