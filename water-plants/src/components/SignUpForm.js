@@ -9,7 +9,7 @@ const formSchema = yup.object().shape({
         .required("Please create a Username"),
     mobilePhone: yup
         .number()
-        .min(10, "Must be a 10 digit number")
+        .min(10, "Phone number should be 10 digits")
         .typeError("Must enter a valid phone number")
         .required("Must enter valid Mobile Phone Number"),
     password: yup

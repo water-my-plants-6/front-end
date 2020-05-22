@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 const EditPlant = props => {
     const [editPlant, setEditPlant] = useState ({
@@ -17,9 +17,9 @@ const EditPlant = props => {
     return(
         <form onSubmit={event =>{
             event.preventDefault()
-            props.addPlant(plant)
+            props.addEdit(editPlant)
 
-            setPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
+            setEditPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
         }} >
             <label htmlFor="nickname">Edit your plant's nickname: </label>
             <input
@@ -27,7 +27,7 @@ const EditPlant = props => {
                 type="text"
                 name="nickname"
                 placeholder="Enter your plant's nickname"
-                value={plant.nickname}
+                value={editPlant.nickname}
                 onChange={changeHandler}
                 />
             <label htmlFor="species">Edit your plant's species: </label>
@@ -36,14 +36,14 @@ const EditPlant = props => {
                 type="text"
                 name="species"
                 placeholder="Enter your plant's nickname"
-                value={plant.species}
+                value={editPlant.species}
                 onChange={changeHandler}
                 />
             <label htmlFor="h2o">Edit your plant's water schedule</label>
             <select
                 id="h20"
                 name="h20"
-                value={plant.h2oFrequency}
+                value={editPlant.h2oFrequency}
                 onChange={changeHandler}
                 >
                 <option value="" disabled={true}>Change water schedule</option>
@@ -52,7 +52,7 @@ const EditPlant = props => {
                 <option value="Bi-Weekly">Bi-Weekly</option>
                 <option value="Monthly">Monthly</option>
             </select> 
-            <button type="submit">Add Plant</button>
+            <button type="submit">Edit</button>
         </form>
     )
 }
