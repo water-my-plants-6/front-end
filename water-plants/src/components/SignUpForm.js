@@ -81,7 +81,7 @@ export default function SignUpForm () {
     return(
         <form onSubmit={formSubmit}>
             <label htmlFor="userName">
-                Username:
+               Create a Username:
             </label>
             <input
                 type="text"
@@ -93,7 +93,7 @@ export default function SignUpForm () {
                 />
                 {errorState.userName.length > 0 ? (<p>{errorState.userName}</p>) : null}
             <label htmlFor="mobileNumber">
-                Mobile Phone Number:
+                Enter your Mobile Phone Number:
             </label>
             <input
                 type="text"
@@ -105,7 +105,7 @@ export default function SignUpForm () {
                 />
                 {errorState.mobilePhone.length > 0 ? (<p>{errorState.mobilePhone}</p>) : null}
             <label htmlFor="password">
-                Password:
+               Create a Password:
             </label>
             <input
                 type="text"
@@ -116,7 +116,7 @@ export default function SignUpForm () {
                 placeholder="Please create your Password"
                 />
                 {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null} 
-            <button disabled={buttonDisabled}>Create  Account</button>
+            <button disabled={buttonDisabled}>Create Account</button>
         </form>
     )
 }
