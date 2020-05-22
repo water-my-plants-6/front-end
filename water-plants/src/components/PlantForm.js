@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 const PlantForm = props => {
     const [plant, setPlant] = useState({
-        id: "",
+        id: Date.now(),
         nickname:"",
         species: "",
         h2oFrequency: ""
@@ -48,9 +48,10 @@ const PlantForm = props => {
                 onChange={changeHandler}
                 >
                 <option value="" disabled={true}>Select Your Water Schedule</option>
-                <option value="One">One</option>
-                <option value="Two">Two</option>
-                <option value="Three">Three</option>
+                <option value="Daily">Daily</option>
+                <option value="Weekly">Weekly</option>
+                <option value="Bi-Weekly">Bi-Weekly</option>
+                <option value="Monthly">Monthly</option>
             </select> 
             <button type="submit">Add Plant</button>
         </form>
