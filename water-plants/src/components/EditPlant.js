@@ -21,6 +21,9 @@ const EditPlant = props => {
 
             setEditPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
         }} >
+            <div>
+                <h1>Edit your plant</h1>
+            </div>
             <label htmlFor="nickname">Edit your plant's nickname: </label>
             <input
                 id="nickname"

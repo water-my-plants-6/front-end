@@ -22,6 +22,9 @@ const PlantForm = props => {
 
             setPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
         }} >
+            <div className="addPlant">
+                <h1>Add a New Plant</h1>
+            </div>
             <label htmlFor="nickname">Nickname your Plant: </label>
             <input
                 id="nickname"

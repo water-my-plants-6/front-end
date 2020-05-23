@@ -64,6 +64,9 @@ export default function AccountUpdate () {
     };
     return(
         <form onSubmit={formSubmit}>
+            <div>
+                <h1>Edit your account information</h1>
+            </div>
             <label htmlFor="mobileNumber">Update your Mobile Phone Number</label>
             <input
                 type="text"

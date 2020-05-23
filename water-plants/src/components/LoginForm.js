@@ -75,6 +75,10 @@ export default function LoginForm () {
 
     return (
         <form onSubmit={formSubmit}>
+            <div className="signIn">
+                <h1>Welcome Back!</h1>
+                <h2>Log into your account</h2>
+            </div>
             <label html="userName">Username:</label>
             <input
                 type="text"

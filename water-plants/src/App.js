@@ -17,6 +17,10 @@ function App() {
   const addEdit=(newEdit) => {
     setEditPlants([...editPlants, newEdit])
   }
+  const [plantList, setPlantList] = useState([])
+  const addList=(newList)=> {
+    setPlantList([...plantList, newList])
+  }
   return (
     <div className="App">
       <Route exact path ="/" component={LoginForm}/>

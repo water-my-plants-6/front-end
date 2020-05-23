@@ -3,6 +3,9 @@ import React from "react";
 const PlantList = props => {
     return(
         <div className="PlantDiv">
+            <div>
+                <h1>List of Plants</h1>
+            </div>
             {props.plants.map(plant =>
                 <div key={plant.id}>
                     <p>Nickname of Plant: {plant.nickname}</p>

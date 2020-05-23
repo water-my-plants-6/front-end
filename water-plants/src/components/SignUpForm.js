@@ -82,6 +82,9 @@ export default function SignUpForm () {
 
     return(
         <form onSubmit={formSubmit}>
+            <div className="signup">
+                <h1>Create a New Account</h1>
+            </div>
             <label htmlFor="userName">
                Create a Username:
             </label>
