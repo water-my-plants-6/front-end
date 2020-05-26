@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Modal, ModalBody} from "reactstrap"
+import {Modal, ModalBody, ModalFooter} from "reactstrap"
 import PlantForm from "./PlantForm"
 
 const PlantList = props => {
@@ -22,6 +22,10 @@ const PlantList = props => {
                         <ModalBody>
                             <p>Would you like to delete? </p>
                         </ModalBody>
+                        <ModalFooter>
+                            <button>Yes</button>
+                            <button>No</button>
+                        </ModalFooter>
                     </Modal>
                 </div>
                 )}
