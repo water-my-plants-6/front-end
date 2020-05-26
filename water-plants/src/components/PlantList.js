@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
+import {Modal, ModalBody} from "reactstrap"
+import PlantForm from "./PlantForm"
 
 const PlantList = props => {
+
+    const [modal, setModal]= useState(false);
+    const toggle = () => setModal(!modal);
     return(
         <div className="PlantDiv">
             <div>
@@ -9,16 +14,19 @@ const PlantList = props => {
             {props.plants.map(plant =>
                 <div key={plant.id}>
                     <p>Nickname of Plant: {plant.nickname}</p>
-                    <button>View</button>
-                    <button>Delete</button>
                     <p>Species of Plant: {plant.species}</p>
-                    <button>View</button>
-                    <button>Delete</button>
                     <p>Water Frequency: {plant.h2oFrequency}</p>
                     <button>View</button>
-                    <button>Delete</button>
+                    <button onClick={toggle}>Delete</button>
+                    <Modal isOpen={modal} toggle={toggle}>
+                        <ModalBody>
+                            <p>Would you like to delete? </p>
+                        </ModalBody>
+                    </Modal>
                 </div>
                 )}
+                <button onClick={toggle}>Add Plant</button>
+                <PlantForm/>
         </div>
     )
 }

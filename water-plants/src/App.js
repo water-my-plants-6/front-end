@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import Navigation from "./components/Navigation";
 import SignUpForm from "./components/SignUpForm";
 import LoginForm from "./components/LoginForm";
 import PlantForm from "./components/PlantForm";
@@ -23,6 +24,7 @@ function App() {
   }
   return (
     <div className="App">
+      {/* <Navigation/> */}
       <Route exact path ="/" component={LoginForm}/>
       <Route exact path = "/signup" component={SignUpForm} />
       <Route exact path ="/addplant" render={()=> <PlantForm addPlant={addPlant}/>}/>
