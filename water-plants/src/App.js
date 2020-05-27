@@ -24,7 +24,7 @@ function App() {
   }
   return (
     <div className="App">
-      {/* <Navigation/> */}
+      <Navigation/>
       <Route exact path ="/" component={LoginForm}/>
       <Route exact path = "/signup" component={SignUpForm} />
       {/* <Route exact path ="/addplant" render={()=> <PlantForm addPlant={addPlant}/>}/> */}
