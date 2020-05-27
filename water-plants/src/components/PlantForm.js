@@ -1,6 +1,55 @@
 import React, {useState} from "react";
 import {Modal, ModalHeader,ModalBody} from "reactstrap"
+import styled from "styled-components";
 
+const Title = styled.h1 `
+    font-size: 5rem;
+    padding-bottom: 10%;
+`
+const Form = styled.form `
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1%;
+`
+const Label = styled.label `
+    margin-bottom: -34px;
+    text-align: left;
+    width: 700px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 2rem;
+`
+
+const Input = styled.input `
+    width: 230px;
+    padding: 8px 26px;
+    margin: 11.5px;
+    border: 1px solid #81814D;
+    border-radius: 4px;
+`
+const Select = styled.select `
+    width: 230px;
+    padding: 8px 26px;
+    margin: 11.5px;
+    border: 1px solid #81814D;
+    border-radius: 4px;
+`
+
+const Button = styled.button `
+    width: 150px;
+    padding: 8px;
+    background-color: #312C1C; 
+    border: 1px solid #81814D;
+    border-radius: 4px;
+    margin-top: 1.6%;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+
+    &:hover {
+       filter:brightness(2.00); 
+    }
+`
 
 
 const PlantForm = props => {
@@ -17,25 +66,25 @@ const PlantForm = props => {
             [event.target.name] : event.target.value
         })
     }
-const [modal, setModal] = useState(false);
+// const [modal, setModal] = useState(false);
 
-const toggle = () => setModal(!modal);  
+// const toggle = () => setModal(!modal);  
 
     return(
-        <Modal isOpen={modal} toggle={toggle}>
-            <ModalHeader toggle={toggle}>Add Plant</ModalHeader>
-            <ModalBody>
-                <form onSubmit={event =>{
+        // <Modal isOpen={modal} toggle={toggle}>
+            // <ModalHeader toggle={toggle}>Add Plant</ModalHeader>
+            // <ModalBody>
+                <Form onSubmit={event =>{
                     event.preventDefault()
                     props.addPlant(plant)
 
                     setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
                 }} >
                     <div className="addPlant">
-                        <h1>Add a New Plant</h1>
+                        <Title>Add a New Plant</Title>
                     </div>
-                    <label htmlFor="nickname">Nickname your Plant: </label>
-                    <input
+                    <Label htmlFor="nickname">Nickname your Plant: </Label>
+                    <Input
                         id="nickname"
                         type="text"
                         name="nickname"
@@ -43,8 +92,8 @@ const toggle = () => setModal(!modal);
                         value={plant.nickname}
                         onChange={changeHandler}
                         />
-                    <label htmlFor="species">Enter your Plant's Species: </label>
-                    <input
+                    <Label htmlFor="species">Enter your Plant's Species: </Label>
+                    <Input
                         id="species"
                         type="text"
                         name="species"
@@ -52,8 +101,8 @@ const toggle = () => setModal(!modal);
                         value={plant.species}
                         onChange={changeHandler}
                         />
-                    <label htmlFor="h2o">Select your Water Schedule</label>
-                    <select
+                    <Label htmlFor="h2o">Select your Water Schedule:</Label>
+                    <Select
                         id="h20"
                         name="h20"
                         value={plant.h2oFrequency}
@@ -64,11 +113,11 @@ const toggle = () => setModal(!modal);
                         <option value="Weekly">Weekly</option>
                         <option value="Bi-Weekly">Bi-Weekly</option>
                         <option value="Monthly">Monthly</option>
-                    </select> 
-                    <button type="submit">Add Plant</button>
-                </form>
-            </ModalBody>
-        </Modal>
+                    </Select> 
+                    <Button type="submit">Add Plant</Button>
+                </Form>
+        //     </ModalBody>
+        // </Modal>
     )
 }
 

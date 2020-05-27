@@ -8,6 +8,10 @@ import PlantList from './components/PlantList';
 import EditPlant from "./components/EditPlant";
 import AccountUpdate from "./components/AccountUpdate";
 import {Route} from "react-router-dom";
+import styled from "styled-components";
+
+
+
 
 function App() {
   const [plants, setPlants] = useState([])
@@ -27,7 +31,7 @@ function App() {
       <Navigation/>
       <Route exact path ="/" component={LoginForm}/>
       <Route exact path = "/signup" component={SignUpForm} />
-      {/* <Route exact path ="/addplant" render={()=> <PlantForm addPlant={addPlant}/>}/> */}
+      <Route exact path ="/addplant" render={()=> <PlantForm addPlant={addPlant}/>}/>
       <Route exact path ="/plantlist" render={()=> <PlantList plants={plants}/>}/>
       <Route exact path="/editplant" render={()=> <EditPlant addEdit={addEdit}/>}/>
       <Route exact path="/accountupdate" component={AccountUpdate}/>

@@ -1,6 +1,51 @@
 import React, {useState} from "react";
 import * as yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
+
+const Title = styled.h1 `
+    font-size: 5rem;
+    padding-bottom: 10%;
+`
+const Form = styled.form `
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1%;
+`
+const Label = styled.label `
+    margin-bottom: -34px;
+    text-align: left;
+    width: 700px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 2rem;
+`
+
+const Input = styled.input `
+    width: 230px;
+    padding: 8px 26px;
+    margin: 11.5px;
+    border: 1px solid #81814D;
+    border-radius: 4px;
+`
+
+const Button = styled.button `
+    width: 150px;
+    padding: 8px;
+    background-color: #312C1C; 
+    border: 1px solid #81814D;
+    border-radius: 4px;
+    margin-top: 1.6%;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+    
+    
+    
+    &:hover {
+       filter:brightness(2.00); 
+    }
+`
 
 
 const formSchema = yup.object().shape({
@@ -63,23 +108,23 @@ export default function AccountUpdate () {
             .catch(err => console.log(err));
     };
     return(
-        <form onSubmit={formSubmit}>
+        <Form onSubmit={formSubmit}>
             <div>
-                <h1>Edit your account information</h1>
+                <Title>Edit your account information</Title>
             </div>
-            <label htmlFor="mobileNumber">Update your Mobile Phone Number</label>
-            <input
+            <Label htmlFor="phoneNumber">Update your Phone Number:</Label>
+            <Input
                 type="text"
-                name="mobileNumber"
-                id="mobileNumber"
+                name="phoneNumber"
+                id="phoneNumber"
                 value={formState.phoneNumber}
                 onChange={inputChange}
                 placeholder="Update Phone Number"
                 />
             {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
-            <button>Update</button>
-            <label htmlFor="password">Update your Password</label>
-            <input
+            <Button>Update</Button>
+            <Label htmlFor="password">Update your Password:</Label>
+            <Input
                 type="text"
                 name="password"
                 id="password"
@@ -88,7 +133,7 @@ export default function AccountUpdate () {
                 placeholder="Update password"
                 />
             {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
-            <button>Update</button>
-        </form>
+            <Button>Update</Button>
+        </Form>
     )
 }
