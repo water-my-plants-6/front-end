@@ -1,7 +1,61 @@
 import React, {useState, useEffect } from "react";
 import * as yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
 
+
+const Title = styled.h1 `
+    font-size: 5rem;
+`
+const SubText = styled.h2 `
+    font-size: 3rem;
+    padding-top: 8%;
+    padding-bottom: 10%;
+    font-family: 'Jaldi', sans-serif;
+`
+
+const Form = styled.form `
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1%;
+`
+const Label = styled.label `
+    margin-bottom: -34px;
+    text-align: left;
+    width: 400px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 2rem;
+`
+
+const Input = styled.input `
+    width: 200px;
+    padding: 8px 26px;
+    margin: 11.5px;
+    border: 1px solid #81814D;
+    border-radius: 4px;
+`
+const Error = styled.p `
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 0.5%;
+    color: red;
+`
+const Button = styled.button `
+    width: 150px;
+    padding: 8px;
+    background-color: #312C1C; 
+    border: 1px solid #81814D;
+    border-radius: 4px;
+    margin-top: 1.6%;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+
+    &:hover {
+       filter:brightness(2.00); 
+    }
+`
 
 const formSchema = yup.object().shape({
     userName: yup
@@ -13,6 +67,7 @@ const formSchema = yup.object().shape({
 })
 
 export default function LoginForm () {
+   
     const [formState, setFormState] = useState({
         userName: "",
         password: ""
@@ -74,13 +129,13 @@ export default function LoginForm () {
     };
 
     return (
-        <form onSubmit={formSubmit}>
+        <Form onSubmit={formSubmit}>
             <div className="signIn">
-                <h1>Welcome Back!</h1>
-                <h2>Log into your account</h2>
+                <Title>Welcome Back!</Title>
+                <SubText>Log into your account</SubText>
             </div>
-            <label html="userName">Username:</label>
-            <input
+            <Label html="userName">Username:</Label>
+            <Input
                 type="text"
                 name="userName"
                 id="userName"
@@ -88,18 +143,18 @@ export default function LoginForm () {
                 onChange={inputChange}
                 placeholder="Enter Username"
                 />
-                {errorState.userName.length > 0 ? (<p>{errorState.userName}</p>) : null}
-            <label html="password">Password:</label>
-            <input
+                {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+            <Label html="password">Password:</Label>
+            <Input
                 type="text"
                 name="password"
                 id="password"
                 value={formState.password}
                 onChange={inputChange}
-                placeholder="Enter Username"
+                placeholder="Enter Password"
                 />
-                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
-            <button disabled={buttonDisabled}>Sign In</button>
-        </form>
+                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
+            <Button disabled={buttonDisabled}>Sign In</Button>
+        </Form>
     )
 }

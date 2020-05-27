@@ -1,13 +1,61 @@
 import React, {useState, useEffect} from "react";
 import * as yup from "yup";
 import axios from "axios";
+import styled from "styled-components";
+
+const Title = styled.h1 `
+    font-size: 5rem;
+    padding-bottom: 10%;
+`
+const Form = styled.form `
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin: 1%;
+`
+const Label = styled.label `
+    margin-bottom: -34px;
+    text-align: left;
+    width: 655px;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 2rem;
+`
+
+const Input = styled.input `
+    width: 230px;
+    padding: 8px 26px;
+    margin: 11.5px;
+    border: 1px solid #81814D;
+    border-radius: 4px;
+`
+const Error = styled.p `
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 0.5%;
+    color: red;
+`
+const Button = styled.button `
+    width: 150px;
+    padding: 8px;
+    background-color: #312C1C; 
+    border: 1px solid #81814D;
+    border-radius: 4px;
+    margin-top: 1.6%;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.8rem;
+    color: white;
+
+    &:hover {
+       filter:brightness(2.00); 
+    }
+`
 
 const formSchema = yup.object().shape({
     userName: yup
         .string()
         .min(4, "Username must be at least 4 characters long")
         .required("Please create a Username"),
-    mobilePhone: yup
+    phoneNumber: yup
         .number()
         .min(10, "Phone number should be 10 digits")
         .typeError("Must enter a valid phone number")
@@ -20,7 +68,7 @@ const formSchema = yup.object().shape({
 export default function SignUpForm () {
     const [formState, setFormState] = useState({
         userName: "",
-        mobilePhone: "",
+        phoneNumber: "",
         password: ""
     });
 
@@ -36,7 +84,7 @@ export default function SignUpForm () {
 
     const [errorState, setErrorState] = useState({
         userName: "",
-        mobilePhone: "",
+        phoneNumber: "",
         password: ""
     })
 
@@ -70,7 +118,7 @@ export default function SignUpForm () {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!")
-        setFormState({userName: "", mobilePhone:"", password:""})
+        setFormState({userName: "", phoneNumber:"", password:""})
         axios
             .post()
             .then(response => {
@@ -81,14 +129,14 @@ export default function SignUpForm () {
     };
 
     return(
-        <form onSubmit={formSubmit}>
+        <Form onSubmit={formSubmit}>
             <div className="signup">
-                <h1>Create a New Account</h1>
+                <Title>Create a New Account</Title>
             </div>
-            <label htmlFor="userName">
+            <Label htmlFor="userName">
                Create a Username:
-            </label>
-            <input
+            </Label>
+            <Input
                 type="text"
                 name="userName"
                 id="userName"
@@ -96,23 +144,23 @@ export default function SignUpForm () {
                 onChange={inputChange}
                 placeholder="Please create your Username"
                 />
-                {errorState.userName.length > 0 ? (<p>{errorState.userName}</p>) : null}
-            <label htmlFor="mobileNumber">
-                Enter your Mobile Phone Number:
-            </label>
-            <input
+                {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+            <Label htmlFor="phoneNumber">
+                Enter your Phone Number:
+            </Label>
+            <Input
                 type="text"
-                name="mobilePhone"
-                id="mobilePhone"
-                value={formState.mobilePhone}
+                name="phoneNumber"
+                id="phoneNumber"
+                value={formState.phoneNumber}
                 onChange={inputChange}
-                placeholder="(xxx)xxx-xxxx"
+                placeholder="xxx-xxx-xxxx"
                 />
-                {errorState.mobilePhone.length > 0 ? (<p>{errorState.mobilePhone}</p>) : null}
-            <label htmlFor="password">
+                {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
+            <Label htmlFor="password">
                Create a Password:
-            </label>
-            <input
+            </Label>
+            <Input
                 type="text"
                 name="password"
                 id="password"
@@ -120,8 +168,8 @@ export default function SignUpForm () {
                 onChange={inputChange}
                 placeholder="Please create your Password"
                 />
-                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null} 
-            <button disabled={buttonDisabled}>Create Account</button>
-        </form>
+                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null} 
+            <Button disabled={buttonDisabled}>Create Account</Button>
+        </Form>
     )
 }
