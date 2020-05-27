@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const formSchema = yup.object().shape({
-    mobileNumber: yup
+    phoneNumber: yup
         .number()
         .min(10, "Phone number must be 10 digits.")
         .typeError("Must enter a Valid Phone Number"),
@@ -14,13 +14,13 @@ const formSchema = yup.object().shape({
 })
 export default function AccountUpdate () {
     const [formState, setFormState] = useState({
-        mobileNumber: "",
+        phoneNumber: "",
         password: ""
     })
     const [post, setPost] = useState()
 
     const [errorState, setErrorState] = useState({
-        mobileNumber: "", 
+        phoneNumber: "", 
         password: ""
     })
     
@@ -53,7 +53,7 @@ export default function AccountUpdate () {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!")
-        setFormState({userName: "", mobileNumber:"", password:""})
+        setFormState({userName: "", phoneNumber:"", password:""})
         axios
             .post()
             .then(response => {
@@ -72,11 +72,11 @@ export default function AccountUpdate () {
                 type="text"
                 name="mobileNumber"
                 id="mobileNumber"
-                value={formState.mobileNumber}
+                value={formState.phoneNumber}
                 onChange={inputChange}
                 placeholder="Update Phone Number"
                 />
-            {errorState.mobileNumber.length > 0 ? (<p>{errorState.mobileNumber}</p>) : null}
+            {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
             <button>Update</button>
             <label htmlFor="password">Update your Password</label>
             <input

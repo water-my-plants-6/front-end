@@ -7,7 +7,7 @@ const formSchema = yup.object().shape({
         .string()
         .min(4, "Username must be at least 4 characters long")
         .required("Please create a Username"),
-    mobilePhone: yup
+    phoneNumber: yup
         .number()
         .min(10, "Phone number should be 10 digits")
         .typeError("Must enter a valid phone number")
@@ -20,7 +20,7 @@ const formSchema = yup.object().shape({
 export default function SignUpForm () {
     const [formState, setFormState] = useState({
         userName: "",
-        mobilePhone: "",
+        phoneNumber: "",
         password: ""
     });
 
@@ -36,7 +36,7 @@ export default function SignUpForm () {
 
     const [errorState, setErrorState] = useState({
         userName: "",
-        mobilePhone: "",
+        phoneNumber: "",
         password: ""
     })
 
@@ -70,7 +70,7 @@ export default function SignUpForm () {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!")
-        setFormState({userName: "", mobilePhone:"", password:""})
+        setFormState({userName: "", phoneNumber:"", password:""})
         axios
             .post()
             .then(response => {
@@ -104,11 +104,11 @@ export default function SignUpForm () {
                 type="text"
                 name="mobilePhone"
                 id="mobilePhone"
-                value={formState.mobilePhone}
+                value={formState.phoneNumber}
                 onChange={inputChange}
-                placeholder="(xxx)xxx-xxxx"
+                placeholder="xxx-xxx-xxxx"
                 />
-                {errorState.mobilePhone.length > 0 ? (<p>{errorState.mobilePhone}</p>) : null}
+                {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
             <label htmlFor="password">
                Create a Password:
             </label>

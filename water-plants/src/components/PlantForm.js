@@ -5,7 +5,7 @@ import {Modal, ModalHeader,ModalBody} from "reactstrap"
 
 const PlantForm = props => {
     const [plant, setPlant] = useState({
-        id: Date.now(),
+        id: "",
         nickname:"",
         species: "",
         h2oFrequency: ""
@@ -29,7 +29,7 @@ const toggle = () => setModal(!modal);
                     event.preventDefault()
                     props.addPlant(plant)
 
-                    setPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
+                    setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
                 }} >
                     <div className="addPlant">
                         <h1>Add a New Plant</h1>
