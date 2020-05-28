@@ -6,7 +6,8 @@ const FormContainer = styled.div `
     border-radius: 8px;
     width: 50%;
     padding: 5%;
-    margin: auto;
+    margin: 3% auto;
+    background-color: white;
 `
 const Title = styled.h1 `
     font-size: 5rem;

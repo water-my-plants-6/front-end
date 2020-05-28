@@ -115,6 +115,8 @@ section {
 }
 body {
   line-height: 1;
+  background-image: url("img/bigleaf.jpg");
+  background-size: cover;
 }
 ol,
 ul {

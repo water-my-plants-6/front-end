@@ -41,7 +41,7 @@ export default function Navigation () {
             <NavContainer> 
                 <Title>Water My Plants</Title>
                 <Navs>
-                    <Anchor href="about.html">About Us</Anchor>
+                    <Anchor href="#">About Us</Anchor>
                     <Anchor href="/">Log Out</Anchor>
                 </Navs>
             </NavContainer>
