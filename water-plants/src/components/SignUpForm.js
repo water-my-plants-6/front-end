@@ -3,6 +3,14 @@ import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
+const FormContainer = styled.div `
+    box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
+    border-radius: 8px;
+    width: 45%;
+    padding: 5%;
+    margin: auto;
+`
+
 const Title = styled.h1 `
     font-size: 5rem;
     padding-bottom: 10%;
@@ -16,7 +24,7 @@ const Form = styled.form `
 const Label = styled.label `
     margin-bottom: -34px;
     text-align: left;
-    width: 655px;
+    width: 70rem;
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
@@ -129,47 +137,49 @@ export default function SignUpForm () {
     };
 
     return(
-        <Form onSubmit={formSubmit}>
-            <div className="signup">
-                <Title>Create a New Account</Title>
-            </div>
-            <Label htmlFor="userName">
-               Create a Username:
-            </Label>
-            <Input
-                type="text"
-                name="userName"
-                id="userName"
-                value={formState.userName}
-                onChange={inputChange}
-                placeholder="Please create your Username"
-                />
-                {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
-            <Label htmlFor="phoneNumber">
-                Enter your Phone Number:
-            </Label>
-            <Input
-                type="text"
-                name="phoneNumber"
-                id="phoneNumber"
-                value={formState.phoneNumber}
-                onChange={inputChange}
-                placeholder="xxx-xxx-xxxx"
-                />
-                {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
-            <Label htmlFor="password">
-               Create a Password:
-            </Label>
-            <Input
-                type="text"
-                name="password"
-                id="password"
-                value={formState.password}
-                onChange={inputChange}
-                placeholder="Please create your Password"
-                />
-                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null} 
-            <Button disabled={buttonDisabled}>Create Account</Button>
-        </Form>
+        <FormContainer>
+            <Form onSubmit={formSubmit}>
+                <div className="signup">
+                    <Title>Create a New Account</Title>
+                </div>
+                <Label htmlFor="userName">
+                Create a Username:
+                </Label>
+                <Input
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    value={formState.userName}
+                    onChange={inputChange}
+                    placeholder="Please create your Username"
+                    />
+                    {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+                <Label htmlFor="phoneNumber">
+                    Enter your Phone Number:
+                </Label>
+                <Input
+                    type="text"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                    value={formState.phoneNumber}
+                    onChange={inputChange}
+                    placeholder="xxx-xxx-xxxx"
+                    />
+                    {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
+                <Label htmlFor="password">
+                Create a Password:
+                </Label>
+                <Input
+                    type="text"
+                    name="password"
+                    id="password"
+                    value={formState.password}
+                    onChange={inputChange}
+                    placeholder="Please create your Password"
+                    />
+                    {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null} 
+                <Button disabled={buttonDisabled}>Create Account</Button>
+            </Form>
+        </FormContainer>
     )
 }

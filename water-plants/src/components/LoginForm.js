@@ -3,7 +3,13 @@ import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
-
+const FormContainer = styled.div `
+    box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
+    border-radius: 8px;
+    width: 30%;
+    padding: 5%;
+    margin: auto;
+`
 const Title = styled.h1 `
     font-size: 5rem;
 `
@@ -23,7 +29,7 @@ const Form = styled.form `
 const Label = styled.label `
     margin-bottom: -34px;
     text-align: left;
-    width: 400px;
+    width: 38rem;
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
@@ -129,32 +135,34 @@ export default function LoginForm () {
     };
 
     return (
-        <Form onSubmit={formSubmit}>
-            <div className="signIn">
-                <Title>Welcome Back!</Title>
-                <SubText>Log into your account</SubText>
-            </div>
-            <Label html="userName">Username:</Label>
-            <Input
-                type="text"
-                name="userName"
-                id="userName"
-                value={formState.userName}
-                onChange={inputChange}
-                placeholder="Enter Username"
-                />
-                {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
-            <Label html="password">Password:</Label>
-            <Input
-                type="text"
-                name="password"
-                id="password"
-                value={formState.password}
-                onChange={inputChange}
-                placeholder="Enter Password"
-                />
-                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
-            <Button disabled={buttonDisabled}>Sign In</Button>
-        </Form>
+        <FormContainer>
+            <Form onSubmit={formSubmit}>
+                <div className="signIn">
+                    <Title>Welcome Back!</Title>
+                    <SubText>Log into your account</SubText>
+                </div>
+                <Label html="userName">Username:</Label>
+                <Input
+                    type="text"
+                    name="userName"
+                    id="userName"
+                    value={formState.userName}
+                    onChange={inputChange}
+                    placeholder="Enter Username"
+                    />
+                    {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+                <Label html="password">Password:</Label>
+                <Input
+                    type="text"
+                    name="password"
+                    id="password"
+                    value={formState.password}
+                    onChange={inputChange}
+                    placeholder="Enter Password"
+                    />
+                    {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
+                <Button disabled={buttonDisabled}>Sign In</Button>
+            </Form>
+        </FormContainer>
     )
 }

@@ -1,6 +1,13 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 
+const FormContainer = styled.div `
+    box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
+    border-radius: 8px;
+    width: 50%;
+    padding: 5%;
+    margin: auto;
+`
 const Title = styled.h1 `
     font-size: 5rem;
     padding-bottom: 10%;
@@ -14,7 +21,7 @@ const Form = styled.form `
 const Label = styled.label `
     margin-bottom: -34px;
     text-align: left;
-    width: 750px;
+    width: 75rem;
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
@@ -65,48 +72,50 @@ const EditPlant = props => {
     }
 
     return(
-        <Form onSubmit={event =>{
-            event.preventDefault()
-            props.addEdit(editPlant)
+        <FormContainer>
+            <Form onSubmit={event =>{
+                event.preventDefault()
+                props.addEdit(editPlant)
 
-            setEditPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
-        }} >
-            <div>
-                <Title>View or edit your plant</Title>
-            </div>
-            <Label htmlFor="nickname">Edit your plant's nickname: </Label>
-            <Input
-                id="nickname"
-                type="text"
-                name="nickname"
-                placeholder="Edit your plant's nickname"
-                value={editPlant.nickname}
-                onChange={changeHandler}
-                />
-            <Label htmlFor="species">Edit your plant's species: </Label>
-            <Input
-                id="species"
-                type="text"
-                name="species"
-                placeholder="Edit your plant's species"
-                value={editPlant.species}
-                onChange={changeHandler}
-                />
-            <Label htmlFor="h2o">Edit your plant's water schedule:</Label>
-            <Select
-                id="h20"
-                name="h20"
-                value={editPlant.h2oFrequency}
-                onChange={changeHandler}
-                >
-                <option value="" disabled={true}>Edit your water schedule</option>
-                <option value="Daily">Daily</option>
-                <option value="Weekly">Weekly</option>
-                <option value="Bi-Weekly">Bi-Weekly</option>
-                <option value="Monthly">Monthly</option>
-            </Select> 
-            <Button type="submit">Edit</Button>
-        </Form>
+                setEditPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
+            }} >
+                <div>
+                    <Title>View or edit your plant</Title>
+                </div>
+                <Label htmlFor="nickname">Edit your plant's nickname: </Label>
+                <Input
+                    id="nickname"
+                    type="text"
+                    name="nickname"
+                    placeholder="Edit your plant's nickname"
+                    value={editPlant.nickname}
+                    onChange={changeHandler}
+                    />
+                <Label htmlFor="species">Edit your plant's species: </Label>
+                <Input
+                    id="species"
+                    type="text"
+                    name="species"
+                    placeholder="Edit your plant's species"
+                    value={editPlant.species}
+                    onChange={changeHandler}
+                    />
+                <Label htmlFor="h2o">Edit your plant's water schedule:</Label>
+                <Select
+                    id="h20"
+                    name="h20"
+                    value={editPlant.h2oFrequency}
+                    onChange={changeHandler}
+                    >
+                    <option value="" disabled={true}>Edit your water schedule</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                    <option value="Bi-Weekly">Bi-Weekly</option>
+                    <option value="Monthly">Monthly</option>
+                </Select> 
+                <Button type="submit">Edit</Button>
+            </Form>
+           </FormContainer> 
     )
 }
 

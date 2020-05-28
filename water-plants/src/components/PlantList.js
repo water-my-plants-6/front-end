@@ -65,8 +65,8 @@ const PlantList = props => {
                             <Para>Would you like to delete? </Para>
                         </ModalBody>
                         <ModalFooter>
-                            <button>Yes</button>
-                            <button>No</button>
+                            <Button>Yes</Button>
+                            <Button>No</Button>
                         </ModalFooter>
                     </Modal>
                 </Card>
