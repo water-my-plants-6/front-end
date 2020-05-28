@@ -30,7 +30,7 @@ const Input = styled.input `
 `
 
 const Button = styled.button `
-    width: 150px;
+    width: 200px;
     padding: 8px;
     background-color: #312C1C; 
     border: 1px solid #81814D;
@@ -122,7 +122,6 @@ export default function AccountUpdate () {
                 placeholder="Update Phone Number"
                 />
             {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
-            <Button>Update</Button>
             <Label htmlFor="password">Update your Password:</Label>
             <Input
                 type="text"
@@ -133,7 +132,7 @@ export default function AccountUpdate () {
                 placeholder="Update password"
                 />
             {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
-            <Button>Update</Button>
+            <Button>Update Your Information</Button>
         </Form>
     )
 }
