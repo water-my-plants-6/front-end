@@ -1,95 +1,50 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const NavBar = styled.section `
+const Header = styled.header `
+    width: 100%;
+    height: 100%;
+`
+const NavContainer = styled.div `
+    display: flex;
+    algin-items: center;
+`
+const Title = styled.h1 `
+    font-size: 5rem;
+    margin-top: 1%;
+    padding-left: 1%;
+`
+const Navs = styled.nav `
+    width: 22rem;
+    margin-left: 70%;
+    font-size: 2.9rem;
+    display: flex;
+    justify-content: space-evenly;
+    line-height: 7.2rem;
    
-    @media(min-width: 400px) {
-        display: flex;
-        flex-direction: row
-    }
-    @media(min-width: 700px) {
-        display: flex;
-        flex-direction: row;
-    }
-
-    @media(min-width: 800px) {
-        display: flex;
-        flex-direction: row;
-    }
-`
-const Title = styled.div `
-    @media(min-width: 400px) {
-        margin-top: 1%;
-        font-size: 3rem;
-        padding-left: 1%;
-    }
-    @media(min-width: 700px) {
-        margin-top: 1%;
-        font-size: 4rem;
-        padding-left: 1%;
-    }
-    @media(min-width: 800px) {
-        margin-top: 1%;
-        font-size: 5rem;
-        padding-left: 1%;
-    }
-`
-const Nav = styled.nav `
-    @media(min-width: 400px) {
-        margin-top: 2%;
-        padding-left: 26%;
-    }
-    @media(min-width: 700px) {
-        maring-top: 2%;
-        padding-left: 42%;
-    }
-    @media(min-width: 800px) {
-        margin-top: 1%;
-        padding-left: 63%;
-    }
 `
 const Anchor = styled.a `
+    text-decoration: none;
+    color: black;
+    background-color: #81814D;
+    font-family: 'Satisfy',cursive;
+    padding: 0.6rem;
+
     &:hover {
-        background-color:#687158; 
-    }
-    @media(min-width: 400px) {
-        text-decoration: none;
-        text-align: center;
-        padding: 14px 16px;
-        background-color: #81814D;
-        color: black;
-        font-size: 1.5rem;
-        font-family: 'Satisfy', cursive;
-    }
-    @media(min-width: 700px) {
-        text-decoration: none;
-        text-align: center;
-        padding: 14px 16px;
-        background-color:#81814D;
-        color: black;
-        font-size: 1.9rem;
-        font-family: 'Satisfy', cursive;
-    }
-    @media(min-width: 800px) {
-        text-decoration: none;
-        text-align: center;
-        padding: 14px 16px;
-        background-color:#81814D;
-        color: black;
-        font-size: 2.9rem;
-        font-family: 'Satisfy', cursive;
+        background-color: #687158;
     }
 `
+
 export default function Navigation () {
     return(
-        <NavBar>
-            <Title>
-                <h1>Water My Plants</h1>
-            </Title>
-            <Nav>
-                <Anchor href="about.html">About Us</Anchor>
-                <Anchor href="/">Log Out</Anchor>
-            </Nav>
-        </NavBar>
+        <Header>
+            <NavContainer> 
+                <Title>Water My Plants</Title>
+                <Navs>
+                    <Anchor href="about.html">About Us</Anchor>
+                    <Anchor href="/">Log Out</Anchor>
+                </Navs>
+            </NavContainer>
+       </Header> 
     )
 }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Modal, ModalHeader,ModalBody} from "reactstrap"
+import {Modal, ModalHeader,ModalBody} from "reactstrap";
 import styled from "styled-components";
 
 const Title = styled.h1 `
