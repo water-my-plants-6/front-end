@@ -3,6 +3,13 @@ import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
+const FormContainer = styled.div `
+    box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
+    border-radius: 8px;
+    width: 45%;
+    padding: 5%;
+    margin: auto;
+`
 const Title = styled.h1 `
     font-size: 5rem;
     padding-bottom: 10%;
@@ -16,7 +23,7 @@ const Form = styled.form `
 const Label = styled.label `
     margin-bottom: -34px;
     text-align: left;
-    width: 700px;
+    width: 70rem;
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
@@ -30,7 +37,7 @@ const Input = styled.input `
 `
 
 const Button = styled.button `
-    width: 150px;
+    width: 200px;
     padding: 8px;
     background-color: #312C1C; 
     border: 1px solid #81814D;
@@ -108,10 +115,11 @@ export default function AccountUpdate () {
             .catch(err => console.log(err));
     };
     return(
+    <FormContainer>
         <Form onSubmit={formSubmit}>
             <div>
                 <Title>Edit your account information</Title>
-            </div>
+                </div>
             <Label htmlFor="phoneNumber">Update your Phone Number:</Label>
             <Input
                 type="text"
@@ -119,10 +127,9 @@ export default function AccountUpdate () {
                 id="phoneNumber"
                 value={formState.phoneNumber}
                 onChange={inputChange}
-                placeholder="Update Phone Number"
+                 placeholder="Update Phone Number"
                 />
-            {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
-            <Button>Update</Button>
+                {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
             <Label htmlFor="password">Update your Password:</Label>
             <Input
                 type="text"
@@ -132,8 +139,10 @@ export default function AccountUpdate () {
                 onChange={inputChange}
                 placeholder="Update password"
                 />
-            {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
-            <Button>Update</Button>
+                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
+            <Button>Update Your Information</Button>
+           
         </Form>
+        </FormContainer>
     )
 }
