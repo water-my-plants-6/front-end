@@ -4,15 +4,17 @@ import axios from "axios";
 import styled from "styled-components";
 
 const FormContainer = styled.div `
-    box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
-    border-radius: 8px;
-    width: 30%;
-    padding: 5%;
-    margin: 3% auto;
-    background-color: white;
+        box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
+        border-radius: 8px;
+        width: 30%;
+        padding: 5%;
+        margin: 3% auto;
+        background-color: white;
+   
 `
 const Title = styled.h1 `
     font-size: 5rem;
+   
 `
 const SubText = styled.h2 `
     font-size: 3rem;
@@ -20,7 +22,7 @@ const SubText = styled.h2 `
     padding-bottom: 10%;
     font-family: 'Jaldi', sans-serif;
 `
-
+    
 const Form = styled.form `
     display: flex;
     flex-flow: column nowrap;
@@ -33,8 +35,8 @@ const Label = styled.label `
     width: 38rem;
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
+    
 `
-
 const Input = styled.input `
     width: 200px;
     padding: 8px 26px;

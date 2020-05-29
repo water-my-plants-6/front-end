@@ -8,11 +8,13 @@ const Header = styled.header `
 const NavContainer = styled.div `
     display: flex;
     algin-items: center;
+    margin-bottom: 5%;
 `
 const Title = styled.h1 `
-    font-size: 5rem;
-    margin-top: 1%;
-    padding-left: 1%;
+     font-size: 5rem;
+     margin-top: 1%;
+     padding-left: 1%;
+   
 `
 const Navs = styled.nav `
     width: 22rem;
@@ -21,7 +23,7 @@ const Navs = styled.nav `
     display: flex;
     justify-content: space-evenly;
     line-height: 7.2rem;
-   
+    
 `
 const Anchor = styled.a `
     text-decoration: none;
@@ -29,9 +31,11 @@ const Anchor = styled.a `
     background-color: #81814D;
     font-family: 'Satisfy',cursive;
     padding: 0.6rem;
+    margin-left: 0;
 
     &:hover {
         background-color: #687158;
+        }
     }
 `
 

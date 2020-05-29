@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
+import {useParams, useHistory} from "react-router-dom";
+
 
 const FormContainer = styled.div `
     box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
@@ -59,12 +61,24 @@ const Button = styled.button `
 `
 
 const EditPlant = props => {
+    
     const [editPlant, setEditPlant] = useState ({
         id: "",
         nickname: "",
         species: "",
         h2oFrequency:""
     })
+    const params= useParams();
+    const history = useHistory();
+    useEffect(()=> {
+        const ids= params.id;
+        
+        setEditPlant({
+            ...editPlant,
+            id : ids
+        })
+    },[params.id]);
+
     const changeHandler = (event) => {
         setEditPlant({
             ...editPlant,
@@ -77,8 +91,9 @@ const EditPlant = props => {
             <Form onSubmit={event =>{
                 event.preventDefault()
                 props.addEdit(editPlant)
+                history.push("/plantlist")
 
-                setEditPlant({id: Date.now(), nickname:"", species: "", h2oFrequency: ""})
+                setEditPlant({id:"", nickname:"", species: "", h2oFrequency: ""})
             }} >
                 <div>
                     <Title>View or edit your plant</Title>
@@ -103,8 +118,8 @@ const EditPlant = props => {
                     />
                 <Label htmlFor="h2o">Edit your plant's water schedule:</Label>
                 <Select
-                    id="h20"
-                    name="h20"
+                    id="h2o"
+                    name="h2oFrequency"
                     value={editPlant.h2oFrequency}
                     onChange={changeHandler}
                     >
@@ -113,7 +128,8 @@ const EditPlant = props => {
                     <option value="Weekly">Weekly</option>
                     <option value="Bi-Weekly">Bi-Weekly</option>
                     <option value="Monthly">Monthly</option>
-                </Select> 
+                </Select>
+                 
                 <Button type="submit">Edit</Button>
             </Form>
            </FormContainer> 
