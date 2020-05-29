@@ -56,6 +56,7 @@ const Button = styled.button `
 
 
 const PlantForm = props => {
+    
     const [plant, setPlant] = useState({
         id: props.number,
         nickname:"",
@@ -71,8 +72,9 @@ const PlantForm = props => {
         })
     }
 
+  
     return(
-        <div className="idk">
+        
             <Modal isOpen={props.modalProp} toggle={props.modalToggle}>
                 <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)", textAlign:"center"}}>Add Plant</ModalHeader>
                 <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
@@ -121,8 +123,7 @@ const PlantForm = props => {
                         <Button type="submit">Add Plant</Button>
                     </Form>
                 </ModalBody>
-            </Modal>
-         </div> 
+            </Modal> 
     )
 }
 

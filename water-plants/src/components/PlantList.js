@@ -78,6 +78,7 @@ const PlantList = props => {
                 <Title>List of Plants</Title>
             </div>
             <PlantDiv>
+                
                 <Modal isOpen={modal} toggle={toggle} style={{width: "20%", marginLeft:"40%"}}>
                         <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
                             <ModalPara>Would you like to delete? </ModalPara>

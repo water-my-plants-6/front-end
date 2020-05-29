@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const FormContainer = styled.div `
     box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
@@ -179,7 +180,9 @@ export default function SignUpForm () {
                     placeholder="Please create your Password"
                     />
                     {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null} 
-                <Button disabled={buttonDisabled}>Create Account</Button>
+                <Link to={"/plantlist"}>
+                    <Button disabled={buttonDisabled}>Create Account</Button>
+                </Link>
             </Form>
         </FormContainer>
     )
