@@ -3,6 +3,8 @@ import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
+import axiosWithAuth from "./utils/axiosWithAuth";
+
 const FormContainer = styled.div `
     box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
     border-radius: 8px;
@@ -64,7 +66,7 @@ const Button = styled.button `
 `
 
 const formSchema = yup.object().shape({
-    userName: yup
+    username: yup
         .string()
         .required("Username Required"),
     password: yup
@@ -72,10 +74,10 @@ const formSchema = yup.object().shape({
         .required("Password is Required")
 })
 
-export default function LoginForm () {
+export default function LoginForm (props) {
    
     const [formState, setFormState] = useState({
-        userName: "",
+        username: "",
         password: ""
     });
     
@@ -124,15 +126,19 @@ export default function LoginForm () {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!")
-        setFormState({userName: "", password: ""})
-        axios 
-            .post()
-            .then(response => {
-                setPost(response.data);
-                console.log("Success", response)
-            })
-            .catch(err => console.log(err));
+        
+        axiosWithAuth()
+        .post("/auth/login", formState)
+        .then(res => {
+            console.log(res);
+            localStorage.setItem("token", res.data.token);
+            props.history.push("/plants");
+        })
+        .catch(err => {
+            console.log(err);
+        });
     };
+
 
     return (
         <FormContainer>
@@ -144,9 +150,9 @@ export default function LoginForm () {
                 <Label html="userName">Username:</Label>
                 <Input
                     type="text"
-                    name="userName"
+                    name="username"
                     id="userName"
-                    value={formState.userName}
+                    value={formState.username}
                     onChange={inputChange}
                     placeholder="Enter Username"
                     />
@@ -165,4 +171,4 @@ export default function LoginForm () {
             </Form>
         </FormContainer>
     )
-}
+};

@@ -66,14 +66,14 @@ const PlantForm = props => {
             [event.target.name] : event.target.value
         })
     }
-// const [modal, setModal] = useState(false);
+const [modal, setModal] = useState(false);
 
-// const toggle = () => setModal(!modal);  
+const toggle = () => setModal(!modal);  
 
     return(
-        // <Modal isOpen={modal} toggle={toggle}>
-            // <ModalHeader toggle={toggle}>Add Plant</ModalHeader>
-            // <ModalBody>
+        <Modal isOpen={modal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>Add Plant</ModalHeader>
+            <ModalBody>
                 <Form onSubmit={event =>{
                     event.preventDefault()
                     props.addPlant(plant)
@@ -116,9 +116,9 @@ const PlantForm = props => {
                     </Select> 
                     <Button type="submit">Add Plant</Button>
                 </Form>
-        //     </ModalBody>
-        // </Modal>
+             </ModalBody>
+         </Modal>
     )
 }
 
-export default PlantForm;
+export default PlantForm;        

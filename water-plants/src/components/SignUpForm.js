@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import axiosWithAuth from "./utils/axiosWithAuth";
 
 const FormContainer = styled.div `
     box-shadow: 0 5px 10px rgba(104, 113, 88, 0.12), 0 5px 2px rgba(104, 113, 88, 0.24);
@@ -75,7 +76,7 @@ const formSchema = yup.object().shape({
 })
 export default function SignUpForm () {
     const [formState, setFormState] = useState({
-        userName: "",
+        username: "",
         phoneNumber: "",
         password: ""
     });
@@ -125,15 +126,17 @@ export default function SignUpForm () {
 
     const formSubmit = e => {
         e.preventDefault();
-        console.log("form submitted!")
-        setFormState({userName: "", phoneNumber:"", password:""})
+        console.log("form submitted!", formState)
+        
         axios
-            .post()
+            .post("https://water-my-plants-bwpt12.herokuapp.com/auth/register", formState)
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
             })
             .catch(err => console.log(err));
+
+            setFormState({userName: "", phoneNumber:"", password:""})
     };
 
     return(
