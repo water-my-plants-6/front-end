@@ -58,7 +58,7 @@ const Button = styled.button `
 const PlantForm = props => {
     
     const [plant, setPlant] = useState({
-        id: props.number,
+        user_Id: props.number,
         nickname:"",
         species: "",
         h2oFrequency: ""

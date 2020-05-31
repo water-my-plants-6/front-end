@@ -63,7 +63,7 @@ const Button = styled.button `
 const EditPlant = props => {
     
     const [editPlant, setEditPlant] = useState ({
-        id: "",
+        user_Id: "",
         nickname: "",
         species: "",
         h2oFrequency:""
@@ -75,7 +75,7 @@ const EditPlant = props => {
         
         setEditPlant({
             ...editPlant,
-            id : ids
+            user_Id : ids
         })
     },[params.id]);
 
@@ -93,7 +93,7 @@ const EditPlant = props => {
                 props.addEdit(editPlant)
                 history.push("/plantlist")
 
-                setEditPlant({id:"", nickname:"", species: "", h2oFrequency: ""})
+                setEditPlant({user_Id:"", nickname:"", species: "", h2oFrequency: ""})
             }} >
                 <div>
                     <Title>View or edit your plant</Title>

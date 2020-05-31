@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -93,7 +92,7 @@ export default function LoginForm (props) {
         })
     }, [formState]);
 
-    const [post, setPost] = useState()
+    // const [post, setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         userName: "",

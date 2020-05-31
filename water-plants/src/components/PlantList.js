@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Modal, ModalBody, ModalFooter} from "reactstrap"
 import{Link} from "react-router-dom";
 import styled from "styled-components";
+import axiosWithAuth from "./utils/axiosWithAuth";
 
 
 const PlantDiv = styled.div `
@@ -67,8 +68,17 @@ const PlantList = props => {
         toggle()
     }
     const deletePlant=() => {
-        props.setPlants(props.plants.filter(plant=> plant.id!==plantId))
-        setPlantId("")
+        // props.setPlants(props.plants.filter(plant=> plant.id!==plantId))
+        // setPlantId("")
+        axiosWithAuth()
+        .delete(`/plants/${plantId}`)
+        .then(
+            res => console.log(res)
+        )
+        .catch(
+            err => console.log(err)
+        )
+        props.fetchPlant()
         toggle()
     }
    console.log(plants)
