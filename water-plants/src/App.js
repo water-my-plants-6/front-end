@@ -68,7 +68,7 @@ function App() {
       <Route exact path = "/signup" component={SignUpForm} />
       <PlantForm addPlant={addPlant} modalProp={modal} modalToggle={toggle} number={number} setNumber={setNumber}/>
       <Route exact path ="/plantlist" render={()=> <PlantList plants={plants} plantToggle={toggle} fetchPlant={fetchPlant}/>}/>
-      <Route exact path="/editplant/:id" render={()=> <EditPlant addEdit={addEdit}/>}/>
+      <Route exact path="/editplant/:id" render={()=> <EditPlant fetchPlant={fetchPlant}/>}/>
       <Route exact path="/accountupdate" component={AccountUpdate}/>
     </div>
   );
