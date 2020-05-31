@@ -8,32 +8,42 @@ import PlantList from './components/PlantList';
 import EditPlant from "./components/EditPlant";
 import AccountUpdate from "./components/AccountUpdate";
 import {Route} from "react-router-dom";
-import styled from "styled-components";
+
 
 
 
 
 function App() {
+  const [number, setNumber] = useState(0)
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+ 
+
   const [plants, setPlants] = useState([])
   const addPlant=(newPlant) => {
     setPlants([...plants, newPlant])
   }
-  const [editPlants, setEditPlants] = useState([])
+
   const addEdit=(newEdit) => {
-    setEditPlants([...editPlants, newEdit])
+    setPlants(plants.map(plant =>{
+      if (newEdit.id ===plant.id) {
+        return(newEdit) 
+      }
+        else {
+          return(plant)
+        }
+      
+    }))
   }
-  const [plantList, setPlantList] = useState([])
-  const addList=(newList)=> {
-    setPlantList([...plantList, newList])
-  }
+  
   return (
     <div className="App">
       <Navigation/>
       <Route exact path ="/" component={LoginForm}/>
       <Route exact path = "/signup" component={SignUpForm} />
-      <Route exact path ="/addplant" render={()=> <PlantForm addPlant={addPlant}/>}/>
-      <Route exact path ="/plantlist" render={()=> <PlantList plants={plants}/>}/>
-      <Route exact path="/editplant" render={()=> <EditPlant addEdit={addEdit}/>}/>
+      <PlantForm addPlant={addPlant} modalProp={modal} modalToggle={toggle} number={number} setNumber={setNumber}/>
+      <Route exact path ="/plantlist" render={()=> <PlantList plants={plants} plantToggle={toggle} setPlants={setPlants}/>}/>
+      <Route exact path="/editplant/:id" render={()=> <EditPlant addEdit={addEdit}/>}/>
       <Route exact path="/accountupdate" component={AccountUpdate}/>
     </div>
   );
