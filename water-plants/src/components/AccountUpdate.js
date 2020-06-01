@@ -114,9 +114,9 @@ export default function AccountUpdate () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({phoneNumber:"", password:""})
-        
+
         axios
-            .post()
+            .post("/auth/register")
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
@@ -150,8 +150,7 @@ export default function AccountUpdate () {
                 />
                 {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
             <Button>Update Your Information</Button>
-           
         </Form>
-        </FormContainer>
+    </FormContainer>
     )
 }
