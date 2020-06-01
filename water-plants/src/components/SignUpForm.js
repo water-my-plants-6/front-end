@@ -130,8 +130,9 @@ export default function SignUpForm () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({userName: "", phoneNumber:"", password:""})
+
         axios
-            .post()
+            .post("https://water-my-plants-bwpt12.herokuapp.com/auth/register", formState)
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
@@ -173,7 +174,7 @@ export default function SignUpForm () {
                 Create a Password:
                 </Label>
                 <Input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     value={formState.password}

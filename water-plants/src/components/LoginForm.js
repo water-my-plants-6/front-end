@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axiosWithAuth from "./utils/axiosWithAuth";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -137,11 +137,12 @@ export default function LoginForm () {
         console.log("form submitted!")
         setFormState({userName: "", password: ""})
 
-        axios 
-            .post()
+        axiosWithAuth() 
+            .post("/auth/login", formState)
             .then(response => {
-                setPost(response.data);
-                console.log("Success", response)
+                setPost(response);
+                localStorage.setItem("token", response.data.token)
+                PaymentResponse.history.push("/plants");
             })
             .catch(err => console.log(err));
     };
@@ -165,7 +166,7 @@ export default function LoginForm () {
                     {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
                 <Label html="password">Password:</Label>
                 <Input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     value={formState.password}
@@ -176,7 +177,7 @@ export default function LoginForm () {
                 <Link to={"/plantlist"}>
                     <Button disabled={buttonDisabled}>Sign In</Button>
                 </Link>
-                <Link to={"/signup"}>
+                <Link to={"/signup"} style={{textDecoration:"none"}}>
                     <SignupPara>Don't have an account? Click here to sign up!</SignupPara>
                 </Link>
             </Form>

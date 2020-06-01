@@ -114,6 +114,7 @@ export default function AccountUpdate () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({phoneNumber:"", password:""})
+        
         axios
             .post()
             .then(response => {
@@ -140,7 +141,7 @@ export default function AccountUpdate () {
                 {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
             <Label htmlFor="password">Update your Password:</Label>
             <Input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
                 value={formState.password}
