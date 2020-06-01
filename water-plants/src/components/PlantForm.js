@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import {Modal, ModalHeader,ModalBody} from "reactstrap";
 import styled from "styled-components";
 
+import { connect } from "react-redux";
+import { addPlant } from "./store/action/index";
+
 
 const Title = styled.h1 `
     font-size: 5rem;
@@ -55,37 +58,45 @@ const Button = styled.button `
 `
 
 
-const PlantForm = props => {
+const PlantForm = (props) => {
     
-    const [plant, setPlant] = useState({
+    const inputState = {
         user_Id: props.number,
         nickname:"",
         species: "",
-        h2oFrequency: ""
-    })
-
+        h2oFrequency: ""};
+    const [input, setInput] = useState(inputState);
+    // const [plant, setPlant] = useState({
+    //     user_Id: props.number,
+    //     nickname:"",
+    //     species: "",
+    //     h2oFrequency: ""
+    // })
+        console.log(props)
   
-    const changeHandler = (event) => {
-        setPlant({
-            ...plant,
-            [event.target.name] : event.target.value
+    const handleChange = e => {
+        e.preventDefault();
+        setInput({
+            ...input,
+            [e.target.name] : e.target.value
         })
     }
 
-  
+    const handleSubmit = e => {
+        e.preventDefault();
+        props.addPlant(input);
+        setInput(inputState);
+    }
+
     return(
-        
             <Modal isOpen={props.modalProp} toggle={props.modalToggle}>
                 <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)", textAlign:"center"}}>Add Plant</ModalHeader>
                 <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
-                    <Form onSubmit={event =>{
-                        event.preventDefault()
-                        props.addPlant(plant)
+                    <Form onSubmit={handleSubmit}>
 
-                        setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
+                        {/* setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
                         props.setNumber(props.number+1)
-                        props.modalToggle()
-                    }} >
+                        props.modalToggle() */}
                         <div className="addPlant">
                             <Title>Add a New Plant</Title>
                         </div>
@@ -95,8 +106,8 @@ const PlantForm = props => {
                             type="text"
                             name="nickname"
                             placeholder="Enter your plant's nickname"
-                            value={plant.nickname}
-                            onChange={changeHandler}
+                            value={input.nickname}
+                            onChange={handleChange}
                             />
                         <Label htmlFor="species">Enter your Plant's Species: </Label>
                         <Input
@@ -104,15 +115,15 @@ const PlantForm = props => {
                             type="text"
                             name="species"
                             placeholder="Enter your plant's nickname"
-                            value={plant.species}
-                            onChange={changeHandler}
+                            value={input.species}
+                            onChange={handleChange}
                             />
                         <Label htmlFor="h2o">Select your Water Schedule:</Label>
                         <Select
                             id="h2o"
                             name="h2oFrequency"
-                            value={plant.h2oFrequency}
-                            onChange={changeHandler}
+                            value={input.h2oFrequency}
+                            onChange={handleChange}
                             >
                             <option value="" disabled={true}>Select Your Water Schedule</option>
                             <option value="Daily">Daily</option>
@@ -127,4 +138,12 @@ const PlantForm = props => {
     )
 }
 
-export default PlantForm;        
+const mapStateToProps = state => {
+    return{
+        plants: state.plants,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps, {addPlant})(PlantForm);        

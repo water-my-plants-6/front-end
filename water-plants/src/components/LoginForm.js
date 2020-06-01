@@ -132,8 +132,8 @@ export default function LoginForm (props) {
         
         axiosWithAuth()
         .post("/auth/login", formState)
-        .then(res => {
-            console.log(res);
+        .then(
+            res => { console.log(res);
             localStorage.setItem("token", res.data.token);
             props.history.push("/plants");
         })

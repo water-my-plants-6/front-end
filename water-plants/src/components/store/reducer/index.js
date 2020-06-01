@@ -1,8 +1,10 @@
 import {
     FETCHING_PLANT_START,
     FETCHING_PLANT_SUCCESS,
+    FETCHING_PLANT_FAILURE,
     ADD_PLANT_START,
     ADD_PLANT_SUCCESS,
+    ADD_PLANT_FAILURE,
 } from "../action/index";
 
 const initialState = {
@@ -17,7 +19,6 @@ export const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 isFetching: true,
-                error: ""
             };
         case FETCHING_PLANT_SUCCESS:
             return{
@@ -25,11 +26,16 @@ export const reducer = (state = initialState, action) => {
                 isFetching: false,
                 plants: action.payload
             };
+        case FETCHING_PLANT_FAILURE:
+            return{
+                ...state,
+                isFetching: false,
+                error: action.payload
+            };
         case ADD_PLANT_START:
             return{
                 ...state,
                 isFetching: true,
-                error: ""
             };
         case ADD_PLANT_SUCCESS:
             return{
@@ -37,6 +43,12 @@ export const reducer = (state = initialState, action) => {
                 plants: action.payload,
                 isFetching: false
             };
+        case ADD_PLANT_FAILURE:
+                return{
+                    ...state,
+                    plants: false,
+                    error: action.payload
+                };
             default:
                 return state;
     }
