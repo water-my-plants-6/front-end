@@ -10,16 +10,24 @@ const NavContainer = styled.div `
     algin-items: center;
     flex-wrap: wrap;
     margin-bottom: 5%;
+    margin-left: 2%;
 `
-const Title = styled.h1 `
+const Title = styled.a `
      font-size: 5rem;
      margin-top: 1%;
-     padding-left: 1%;
-   
+     font-family: 'Satisfy',cursive;
+     text-decoration: none;
+     color: black;
+
+     &:hover {
+        text-decoration: none;
+        color: black;
+    }
 `
+
 const Navs = styled.nav `
     width: 43rem;
-    margin-left: 59.5%;
+    margin-left: 60%;
     font-size: 2.9rem;
     display: flex;
     justify-content: space-evenly;
@@ -45,8 +53,8 @@ const Anchor = styled.a `
 export default function Navigation () {
     return(
         <Header>
-            <NavContainer> 
-                <Title>Water My Plants</Title>
+            <NavContainer>
+                    <Title href="https://jolly-hoover-40259b.netlify.app/index.html">Water My Plants</Title>
                 <Navs>
                     <Anchor href="https://wizardly-darwin-0302c1.netlify.app/about.html">About Us</Anchor>
                     <Anchor href="/">Log Out</Anchor>
