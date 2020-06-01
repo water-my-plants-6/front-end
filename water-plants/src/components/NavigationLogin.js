@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from "react-router-dom";
 
 const Header = styled.header `
     width: 100%;
@@ -44,7 +45,7 @@ const Anchor = styled.a `
 export default function NavigationLogin () {
     return(
         <Header>
-            <NavContainer> 
+            <NavContainer>
                 <Title>Water My Plants</Title>
                 <Navs>
                     <Anchor href="https://wizardly-darwin-0302c1.netlify.app/about.html">About Us</Anchor>
