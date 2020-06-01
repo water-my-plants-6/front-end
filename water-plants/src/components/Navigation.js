@@ -29,7 +29,7 @@ const Navs = styled.nav `
 const Anchor = styled.a `
     text-decoration: none;
     color: black;
-    background-color: #81814D;
+    background-image: linear-gradient(to right, #687158, #81814D);
     font-family: 'Satisfy',cursive;
     padding: 0.6rem;
    
@@ -37,7 +37,7 @@ const Anchor = styled.a `
     &:hover {
         text-decoration: none;
         color: black;
-        background-color: #687158;
+        background-image: linear-gradient(to right, #81814D, #687158);
         }
     }
 `
@@ -50,7 +50,7 @@ export default function Navigation () {
                 <Navs>
                     <Anchor href="https://wizardly-darwin-0302c1.netlify.app/about.html">About Us</Anchor>
                     <Anchor href="/">Log Out</Anchor>
-                    <Anchor href="/accountupdate">Account Update</Anchor>
+                    <Anchor href="/accountupdate">Update Account</Anchor>
                 </Navs>
             </NavContainer>
        </Header> 

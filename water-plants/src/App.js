@@ -42,6 +42,7 @@ function App() {
     <div className="App">
       <Route exact path ="/" component={NavigationLogin}/>
       <Route exact path ="/" component={LoginForm}/>
+      <Route exact path ="/signup" component={NavigationLogin}/>
       <Route exact path = "/signup" component={SignUpForm}/>
       <PlantForm addPlant={addPlant} modalProp={modal} modalToggle={toggle} number={number} setNumber={setNumber}/>
       <Route exact path = "/plantlist" render={Navigation}/>

@@ -34,9 +34,10 @@ const Label = styled.label `
 const Input = styled.input `
     width: 230px;
     padding: 8px 26px;
-    margin: 11.5px;
+    margin: 8.5px;
     border: 1px solid #81814D;
     border-radius: 4px;
+    font-size: 1.3rem;
 `
 const Error = styled.p `
     font-family: 'Jaldi', sans-serif;
@@ -90,7 +91,7 @@ export default function SignUpForm () {
         })
     }, [formState]);
 
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         userName: "",
@@ -129,8 +130,9 @@ export default function SignUpForm () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({userName: "", phoneNumber:"", password:""})
+
         axios
-            .post()
+            .post("https://water-my-plants-bwpt12.herokuapp.com/auth/register", formState)
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
@@ -172,7 +174,7 @@ export default function SignUpForm () {
                 Create a Password:
                 </Label>
                 <Input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     value={formState.password}

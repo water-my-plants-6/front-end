@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axiosWithAuth from "./utils/axiosWithAuth";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -41,9 +41,10 @@ const Label = styled.label `
 const Input = styled.input `
     width: 200px;
     padding: 8px 26px;
-    margin: 11.5px;
+    margin: 8.5px;
     border: 1px solid #81814D;
     border-radius: 4px;
+    font-size: 1.3rem;
 `
 const Error = styled.p `
     font-family: 'Jaldi', sans-serif;
@@ -65,6 +66,12 @@ const Button = styled.button `
     &:hover {
        filter:brightness(2.00); 
     }
+`
+const SignupPara = styled.p `
+    font-size: 1.7rem;
+    font-family: 'Jaldi', sans-serif;
+    color: #81814D;
+    padding-top: 15%;
 `
 
 const formSchema = yup.object().shape({
@@ -91,7 +98,7 @@ export default function LoginForm () {
         })
     }, [formState]);
 
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         userName: "",
@@ -129,11 +136,13 @@ export default function LoginForm () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({userName: "", password: ""})
-        axios 
-            .post()
+
+        axiosWithAuth() 
+            .post("/auth/login", formState)
             .then(response => {
-                setPost(response.data);
-                console.log("Success", response)
+                setPost(response);
+                localStorage.setItem("token", response.data.token)
+                PaymentResponse.history.push("/plants");
             })
             .catch(err => console.log(err));
     };
@@ -157,7 +166,7 @@ export default function LoginForm () {
                     {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
                 <Label html="password">Password:</Label>
                 <Input
-                    type="text"
+                    type="password"
                     name="password"
                     id="password"
                     value={formState.password}
@@ -167,6 +176,9 @@ export default function LoginForm () {
                     {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
                 <Link to={"/plantlist"}>
                     <Button disabled={buttonDisabled}>Sign In</Button>
+                </Link>
+                <Link to={"/signup"} style={{textDecoration:"none"}}>
+                    <SignupPara>Don't have an account? Click here to sign up!</SignupPara>
                 </Link>
             </Form>
         </FormContainer>

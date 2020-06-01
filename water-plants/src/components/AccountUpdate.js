@@ -28,13 +28,20 @@ const Label = styled.label `
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
+const Error = styled.p `
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 0.5%;
+    color: red;
+`
 
 const Input = styled.input `
     width: 230px;
     padding: 8px 26px;
-    margin: 11.5px;
+    margin: 8.5px;
     border: 1px solid #81814D;
     border-radius: 4px;
+    font-size: 1.3rem;
 `
 
 const Button = styled.button `
@@ -70,7 +77,7 @@ export default function AccountUpdate () {
         phoneNumber: "",
         password: ""
     })
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         phoneNumber: "", 
@@ -107,8 +114,9 @@ export default function AccountUpdate () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({phoneNumber:"", password:""})
+
         axios
-            .post()
+            .post("/auth/register")
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
@@ -130,20 +138,19 @@ export default function AccountUpdate () {
                 onChange={inputChange}
                  placeholder="Update Phone Number"
                 />
-                {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
+                {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
             <Label htmlFor="password">Update your Password:</Label>
             <Input
-                type="text"
+                type="password"
                 name="password"
                 id="password"
                 value={formState.password}
                 onChange={inputChange}
                 placeholder="Update password"
                 />
-                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
+                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
             <Button>Update Your Information</Button>
-           
         </Form>
-        </FormContainer>
+    </FormContainer>
     )
 }
