@@ -38,9 +38,10 @@ const Error = styled.p `
 const Input = styled.input `
     width: 230px;
     padding: 8px 26px;
-    margin: 11.5px;
+    margin: 8.5px;
     border: 1px solid #81814D;
     border-radius: 4px;
+    font-size: 1.3rem;
 `
 
 const Button = styled.button `

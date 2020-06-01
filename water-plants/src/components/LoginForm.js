@@ -41,9 +41,10 @@ const Label = styled.label `
 const Input = styled.input `
     width: 200px;
     padding: 8px 26px;
-    margin: 11.5px;
+    margin: 8.5px;
     border: 1px solid #81814D;
     border-radius: 4px;
+    font-size: 1.3rem;
 `
 const Error = styled.p `
     font-family: 'Jaldi', sans-serif;
