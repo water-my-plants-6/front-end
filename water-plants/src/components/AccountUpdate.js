@@ -70,7 +70,7 @@ export default function AccountUpdate () {
         phoneNumber: "",
         password: ""
     })
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         phoneNumber: "", 

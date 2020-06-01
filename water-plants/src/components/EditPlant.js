@@ -55,7 +55,6 @@ const Button = styled.button `
     font-family: 'Jaldi', sans-serif;
     font-size: 1.8rem;
     color: white;
-
     &:hover {
        filter:brightness(2.00); 
     }
@@ -85,14 +84,15 @@ const EditPlant = props => {
         )
     }, [params.id]);
     
-    // useEffect(()=> {
-    //     const ids= params.id;
+    useEffect(()=> {
+        const ids= params.id;
         
-    //     setEditPlant({
-    //         ...editPlant,
-    //         user_Id : ids
-    //     })
-    // },[params.id]);
+        setEditPlant({
+            ...editPlant,
+            user_Id : ids
+        })
+    },[params.id]);
+    
     const updatePlant = (event) => {
         event.preventDefault()
         const update = {

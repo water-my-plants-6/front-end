@@ -55,7 +55,6 @@ const Button = styled.button `
     font-family: 'Jaldi', sans-serif;
     font-size: 1.8rem;
     color: white;
-
     &:hover {
        filter:brightness(2.00); 
     }
@@ -94,7 +93,7 @@ export default function SignUpForm () {
     const [post, setPost] = useState()
 
     const [errorState, setErrorState] = useState({
-        userName: "",
+        username: "",
         phoneNumber: "",
         password: ""
     })

@@ -2,9 +2,6 @@ import React, {useState} from "react";
 import {Modal, ModalHeader,ModalBody} from "reactstrap";
 import styled from "styled-components";
 
-import { connect } from "react-redux";
-import { addPlant } from "./store/action/index";
-
 
 const Title = styled.h1 `
     font-size: 5rem;
@@ -51,52 +48,43 @@ const Button = styled.button `
     font-family: 'Jaldi', sans-serif;
     font-size: 1.8rem;
     color: white;
-
     &:hover {
        filter:brightness(2.00); 
     }
 `
 
 
-const PlantForm = (props) => {
+const PlantForm = props => {
     
-    const inputState = {
+    const [plant, setPlant] = useState({
         user_Id: props.number,
         nickname:"",
         species: "",
-        h2oFrequency: ""};
-    const [input, setInput] = useState(inputState);
-    // const [plant, setPlant] = useState({
-    //     user_Id: props.number,
-    //     nickname:"",
-    //     species: "",
-    //     h2oFrequency: ""
-    // })
-        console.log(props)
+        h2oFrequency: ""
+    })
+
   
-    const handleChange = e => {
-        e.preventDefault();
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
+    const changeHandler = (event) => {
+        setPlant({
+            ...plant,
+            [event.target.name] : event.target.value
         })
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        props.addPlant(input);
-        setInput(inputState);
-    }
-
+  
     return(
+        
             <Modal isOpen={props.modalProp} toggle={props.modalToggle}>
                 <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)", textAlign:"center"}}>Add Plant</ModalHeader>
                 <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={event =>{
+                        event.preventDefault()
+                        props.addPlant(plant)
 
-                        {/* setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
+                        setPlant({id: "", nickname:"", species: "", h2oFrequency: ""})
                         props.setNumber(props.number+1)
-                        props.modalToggle() */}
+                        props.modalToggle()
+                    }} >
                         <div className="addPlant">
                             <Title>Add a New Plant</Title>
                         </div>
@@ -106,8 +94,8 @@ const PlantForm = (props) => {
                             type="text"
                             name="nickname"
                             placeholder="Enter your plant's nickname"
-                            value={input.nickname}
-                            onChange={handleChange}
+                            value={plant.nickname}
+                            onChange={changeHandler}
                             />
                         <Label htmlFor="species">Enter your Plant's Species: </Label>
                         <Input
@@ -115,15 +103,15 @@ const PlantForm = (props) => {
                             type="text"
                             name="species"
                             placeholder="Enter your plant's nickname"
-                            value={input.species}
-                            onChange={handleChange}
+                            value={plant.species}
+                            onChange={changeHandler}
                             />
                         <Label htmlFor="h2o">Select your Water Schedule:</Label>
                         <Select
                             id="h2o"
                             name="h2oFrequency"
-                            value={input.h2oFrequency}
-                            onChange={handleChange}
+                            value={plant.h2oFrequency}
+                            onChange={changeHandler}
                             >
                             <option value="" disabled={true}>Select Your Water Schedule</option>
                             <option value="Daily">Daily</option>
@@ -138,12 +126,4 @@ const PlantForm = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    return{
-        plants: state.plants,
-        isFetching: state.isFetching,
-        error: state.error
-    }
-}
-
-export default connect(mapStateToProps, {addPlant})(PlantForm);        
+export default PlantForm; 
