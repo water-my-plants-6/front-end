@@ -28,7 +28,7 @@ const Navs = styled.nav `
 const Anchor = styled.a `
     text-decoration: none;
     color: black;
-    background-color: #81814D;
+    background-image: linear-gradient(to right, #687158, #81814D);
     font-family: 'Satisfy',cursive;
     padding: 0.6rem;
    
@@ -36,7 +36,7 @@ const Anchor = styled.a `
     &:hover {
         text-decoration: none;
         color: black;
-        background-color: #687158;
+        background-image: linear-gradient(to right, #81814D, #687158);
         }
     }
 `

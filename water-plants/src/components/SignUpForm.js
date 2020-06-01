@@ -90,7 +90,7 @@ export default function SignUpForm () {
         })
     }, [formState]);
 
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         userName: "",

@@ -28,6 +28,12 @@ const Label = styled.label `
     font-family: 'Jaldi', sans-serif;
     font-size: 2rem;
 `
+const Error = styled.p `
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 0.5%;
+    color: red;
+`
 
 const Input = styled.input `
     width: 230px;
@@ -70,7 +76,7 @@ export default function AccountUpdate () {
         phoneNumber: "",
         password: ""
     })
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         phoneNumber: "", 
@@ -130,7 +136,7 @@ export default function AccountUpdate () {
                 onChange={inputChange}
                  placeholder="Update Phone Number"
                 />
-                {errorState.phoneNumber.length > 0 ? (<p>{errorState.phoneNumber}</p>) : null}
+                {errorState.phoneNumber.length > 0 ? (<Error>{errorState.phoneNumber}</Error>) : null}
             <Label htmlFor="password">Update your Password:</Label>
             <Input
                 type="text"
@@ -140,7 +146,7 @@ export default function AccountUpdate () {
                 onChange={inputChange}
                 placeholder="Update password"
                 />
-                {errorState.password.length > 0 ? (<p>{errorState.password}</p>) : null}
+                {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
             <Button>Update Your Information</Button>
            
         </Form>

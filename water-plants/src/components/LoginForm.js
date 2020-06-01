@@ -66,6 +66,12 @@ const Button = styled.button `
        filter:brightness(2.00); 
     }
 `
+const SignupPara = styled.p `
+    font-size: 1.7rem;
+    font-family: 'Jaldi', sans-serif;
+    color: #81814D;
+    padding-top: 15%;
+`
 
 const formSchema = yup.object().shape({
     userName: yup
@@ -91,7 +97,7 @@ export default function LoginForm () {
         })
     }, [formState]);
 
-    const [post, setPost] = useState()
+    const [setPost] = useState()
 
     const [errorState, setErrorState] = useState({
         userName: "",
@@ -129,6 +135,7 @@ export default function LoginForm () {
         e.preventDefault();
         console.log("form submitted!")
         setFormState({userName: "", password: ""})
+
         axios 
             .post()
             .then(response => {
@@ -167,6 +174,9 @@ export default function LoginForm () {
                     {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
                 <Link to={"/plantlist"}>
                     <Button disabled={buttonDisabled}>Sign In</Button>
+                </Link>
+                <Link to={"/signup"}>
+                    <SignupPara>Don't have an account? Click here to sign up!</SignupPara>
                 </Link>
             </Form>
         </FormContainer>
