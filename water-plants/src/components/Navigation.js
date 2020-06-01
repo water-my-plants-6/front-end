@@ -8,6 +8,7 @@ const Header = styled.header `
 const NavContainer = styled.div `
     display: flex;
     algin-items: center;
+    flex-wrap: wrap;
     margin-bottom: 5%;
 `
 const Title = styled.h1 `
@@ -17,8 +18,8 @@ const Title = styled.h1 `
    
 `
 const Navs = styled.nav `
-    width: 22rem;
-    margin-left: 70%;
+    width: 43rem;
+    margin-left: 59.5%;
     font-size: 2.9rem;
     display: flex;
     justify-content: space-evenly;
@@ -31,9 +32,11 @@ const Anchor = styled.a `
     background-color: #81814D;
     font-family: 'Satisfy',cursive;
     padding: 0.6rem;
-    margin-left: 0;
+   
 
     &:hover {
+        text-decoration: none;
+        color: black;
         background-color: #687158;
         }
     }
@@ -47,6 +50,7 @@ export default function Navigation () {
                 <Navs>
                     <Anchor href="#">About Us</Anchor>
                     <Anchor href="/">Log Out</Anchor>
+                    <Anchor href="/accountupdate">Account Update</Anchor>
                 </Navs>
             </NavContainer>
        </Header> 

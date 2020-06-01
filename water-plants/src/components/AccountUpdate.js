@@ -106,7 +106,7 @@ export default function AccountUpdate () {
     const formSubmit = e => {
         e.preventDefault();
         console.log("form submitted!")
-        setFormState({userName: "", phoneNumber:"", password:""})
+        setFormState({phoneNumber:"", password:""})
         axios
             .post()
             .then(response => {
