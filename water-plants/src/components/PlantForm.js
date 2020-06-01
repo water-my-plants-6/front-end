@@ -76,8 +76,8 @@ const PlantForm = props => {
     return(
         
             <Modal isOpen={props.modalProp} toggle={props.modalToggle}>
-                <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)", textAlign:"center"}}>Add Plant</ModalHeader>
-                <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
+                <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)",width: "770px"}}>Add Plant</ModalHeader>
+                <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)", width: '770px'}}>
                     <Form onSubmit={event =>{
                         event.preventDefault()
                         props.addPlant(plant)

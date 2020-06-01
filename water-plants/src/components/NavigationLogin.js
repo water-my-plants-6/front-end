@@ -8,7 +8,6 @@ const Header = styled.header `
 const NavContainer = styled.div `
     display: flex;
     algin-items: center;
-    flex-wrap: wrap;
     margin-bottom: 5%;
 `
 const Title = styled.h1 `
@@ -18,8 +17,8 @@ const Title = styled.h1 `
    
 `
 const Navs = styled.nav `
-    width: 43rem;
-    margin-left: 59.5%;
+    width: 22rem;
+    margin-left: 70%;
     font-size: 2.9rem;
     display: flex;
     justify-content: space-evenly;
@@ -42,15 +41,14 @@ const Anchor = styled.a `
     }
 `
 
-export default function Navigation () {
+export default function NavigationLogin () {
     return(
         <Header>
             <NavContainer> 
                 <Title>Water My Plants</Title>
                 <Navs>
                     <Anchor href="https://wizardly-darwin-0302c1.netlify.app/about.html">About Us</Anchor>
-                    <Anchor href="/">Log Out</Anchor>
-                    <Anchor href="/accountupdate">Account Update</Anchor>
+                    <Anchor href="/">Log In</Anchor>
                 </Navs>
             </NavContainer>
        </Header> 

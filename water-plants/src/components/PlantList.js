@@ -51,7 +51,22 @@ const Button = styled.button `
        filter:brightness(2.00); 
     }
 `
+const ModalButton = styled.button `
+    width: 150px;
+    padding: 8px;
+    background-color: #312C1C; 
+    border: 1px solid #81814D;
+    border-radius: 4px;
+    margin-top: 5%;
+    font-family: 'Jaldi', sans-serif;
+    font-size: 1.8rem;
+    
+    color: white;
 
+    &:hover {
+       filter:brightness(2.00); 
+    }
+`
 
 const PlantList = props => {
 
@@ -78,14 +93,13 @@ const PlantList = props => {
                 <Title>List of Plants</Title>
             </div>
             <PlantDiv>
-                
-                <Modal isOpen={modal} toggle={toggle} style={{width: "20%", marginLeft:"40%"}}>
+                <Modal isOpen={modal} toggle={toggle}>
                         <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
                             <ModalPara>Would you like to delete? </ModalPara>
                         </ModalBody>
-                        <ModalFooter style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
-                            <Button onClick={deletePlant}>Yes</Button>
-                            <Button onClick={toggle}>No</Button>
+                        <ModalFooter style={{border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
+                            <ModalButton onClick={deletePlant}>Yes</ModalButton>
+                            <ModalButton onClick={toggle}>No</ModalButton>
                         </ModalFooter>
                     </Modal>
             {props.plants.map(plant =>
