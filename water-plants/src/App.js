@@ -8,6 +8,7 @@ import PlantList from './components/PlantList';
 import EditPlant from "./components/EditPlant";
 import AccountUpdate from "./components/AccountUpdate";
 import {Route} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"
 
 
 
