@@ -122,7 +122,7 @@ const EditPlant = props => {
         <FormContainer>
             <Form onSubmit={event =>{
                 event.preventDefault()
-                // props.addEdit(editPlant)
+                props.addEdit(editPlant)
                 updatePlant(event)
                 history.push("/plantlist")
 

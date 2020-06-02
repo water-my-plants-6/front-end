@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from "react";
 import * as yup from "yup";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 
 import axiosWithAuth from "./utils/axiosWithAuth";
 
@@ -94,7 +94,7 @@ export default function LoginForm (props) {
     // const [post, setPost] = useState()
 
     const [errorState, setErrorState] = useState({
-        userName: "",
+        username: "",
         password: ""
     })
 
@@ -121,7 +121,7 @@ export default function LoginForm (props) {
     const inputChange = e => {
         e.persist();
         let value = e.target.value
-        validate(e)
+        // validate(e)
         setFormState({...formState, [e.target.name]: value});
     };
 
@@ -134,7 +134,7 @@ export default function LoginForm (props) {
         .then(res => {
             console.log(res, "submit response");
             localStorage.setItem("token", res.data.token);
-            props.history.push("/plants");
+            props.history.push("/plantlist");
         })
         .catch(err => {
             console.log(err);
@@ -149,11 +149,11 @@ export default function LoginForm (props) {
                     <Title>Welcome Back!</Title>
                     <SubText>Log into your account</SubText>
                 </div>
-                <Label html="userName">Username:</Label>
+                <Label html="username">Username:</Label>
                 <Input
                     type="text"
                     name="username"
-                    id="userName"
+                    id="username"
                     value={formState.username}
                     onChange={inputChange}
                     placeholder="Enter Username"
