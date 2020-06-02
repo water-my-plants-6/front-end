@@ -10,7 +10,7 @@ const NavContainer = styled.div `
     algin-items: center;
     flex-wrap: wrap;
     margin-bottom: 5%;
-    margin-left: 2%;
+    margin-left: 0.5%;
 `
 const Title = styled.a `
      font-size: 5rem;
