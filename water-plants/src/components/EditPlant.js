@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {useParams, useHistory} from "react-router-dom";
+import axiosWithAuth from "./utils/axiosWithAuth";
 
 
 const FormContainer = styled.div `
@@ -56,31 +57,62 @@ const Button = styled.button `
     font-family: 'Jaldi', sans-serif;
     font-size: 1.8rem;
     color: white;
-
     &:hover {
        filter:brightness(2.00); 
     }
 `
 
 const EditPlant = props => {
-    
+    const [plant, setPlant] = useState ({})
+
+    const params= useParams();
+
+    const history = useHistory();
     const [editPlant, setEditPlant] = useState ({
-        id: "",
+        user_Id: "",
         nickname: "",
         species: "",
         h2oFrequency:""
     })
-    const params= useParams();
-    const history = useHistory();
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get(`/plants/${params.id}`)
+        .then(
+            res => setPlant(res.data)
+        )
+        .catch(
+            err => console.log(err)
+        )
+    }, [params.id]);
+    
     useEffect(()=> {
         const ids= params.id;
         
         setEditPlant({
             ...editPlant,
-            id : ids
+            user_Id : ids
         })
     },[params.id]);
-
+    
+    const updatePlant = (event) => {
+        event.preventDefault()
+        const update = {
+            user_Id: editPlant.user_Id || params.id,
+            nickname: editPlant.nickname || plant.nickname,
+            species: editPlant.species || plant.species,
+            h2oFrequency: editPlant.h2oFrequency || plant.h2oFrequency
+        }
+        console.log(update)
+        axiosWithAuth()
+        .put(`/plants/${params.id}`, update)
+        .then(
+            res => props.fetchPlant()
+        )
+        .catch(
+            err => console.log(err)
+        )
+    }
     const changeHandler = (event) => {
         setEditPlant({
             ...editPlant,
@@ -93,9 +125,10 @@ const EditPlant = props => {
             <Form onSubmit={event =>{
                 event.preventDefault()
                 props.addEdit(editPlant)
+                updatePlant(event)
                 history.push("/plantlist")
 
-                setEditPlant({id:"", nickname:"", species: "", h2oFrequency: ""})
+                setEditPlant({user_Id:"", nickname:"", species: "", h2oFrequency: ""})
             }} >
                 <div>
                     <Title>View or edit your plant</Title>

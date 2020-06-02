@@ -50,7 +50,6 @@ const Button = styled.button `
     font-family: 'Jaldi', sans-serif;
     font-size: 1.8rem;
     color: white;
-
     &:hover {
        filter:brightness(2.00); 
     }
@@ -60,7 +59,7 @@ const Button = styled.button `
 const PlantForm = props => {
     
     const [plant, setPlant] = useState({
-        id: props.number,
+        user_Id: props.number,
         nickname:"",
         species: "",
         h2oFrequency: ""
@@ -78,8 +77,8 @@ const PlantForm = props => {
     return(
         
             <Modal isOpen={props.modalProp} toggle={props.modalToggle}>
-                <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)",width: "770px"}}>Add Plant</ModalHeader>
-                <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)", width: '770px'}}>
+                <ModalHeader toggle={props.modalToggle} style={{background: "linear-gradient(to right, #81814D, #687158)", textAlign:"center"}}>Add Plant</ModalHeader>
+                <ModalBody style={{padding: "15px", border:"1px solid #C7BEAE", background: "linear-gradient(to right, #81814D, #687158)"}}>
                     <Form onSubmit={event =>{
                         event.preventDefault()
                         props.addPlant(plant)
@@ -129,4 +128,4 @@ const PlantForm = props => {
     )
 }
 
-export default PlantForm;
+export default PlantForm; 
