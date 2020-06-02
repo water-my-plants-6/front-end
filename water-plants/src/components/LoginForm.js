@@ -127,12 +127,12 @@ export default function LoginForm (props) {
 
     const formSubmit = e => {
         e.preventDefault();
-        console.log("form submitted!")
+        console.log("form submitted!", formState)
         
         axiosWithAuth()
         .post("/auth/login", formState)
         .then(res => {
-            console.log(res);
+            console.log(res, "submit response");
             localStorage.setItem("token", res.data.token);
             props.history.push("/plants");
         })
@@ -158,7 +158,7 @@ export default function LoginForm (props) {
                     onChange={inputChange}
                     placeholder="Enter Username"
                     />
-                    {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+                    {errorState.username.length > 0 ? (<Error>{errorState.username}</Error>) : null}
                 <Label html="password">Password:</Label>
                 <Input
                     type="text"
@@ -169,9 +169,7 @@ export default function LoginForm (props) {
                     placeholder="Enter Password"
                     />
                     {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null}
-                <Link to={"/plantlist"}>
                     <Button disabled={buttonDisabled}>Sign In</Button>
-                </Link>
             </Form>
         </FormContainer>
     )

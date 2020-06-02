@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import * as yup from "yup";
-import axios from "axios";
+import axiosWithAuth from "./utils/axiosWithAuth";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
@@ -121,7 +121,7 @@ export default function SignUpForm () {
     const inputChange = e => {
         e.persist();
         let value = e.target.value
-        validate(e)
+        // validate(e)
         setFormState({...formState, [e.target.name]: value});
     };
 
@@ -129,15 +129,15 @@ export default function SignUpForm () {
         e.preventDefault();
         console.log("form submitted!", formState)
         
-        axios
-            .post("https://water-my-plants-bwpt12.herokuapp.com/auth/register", formState)
+        axiosWithAuth()
+            .post("/auth/register", formState)
             .then(response => {
                 setPost(response.data);
                 console.log("Success", response)
             })
             .catch(err => console.log(err));
 
-            setFormState({userName: "", phoneNumber:"", password:""})
+            setFormState({username: "", phoneNumber:"", password:""})
     };
 
     return(
@@ -146,18 +146,18 @@ export default function SignUpForm () {
                 <div className="signup">
                     <Title>Create a New Account</Title>
                 </div>
-                <Label htmlFor="userName">
+                <Label htmlFor="username">
                 Create a Username:
                 </Label>
                 <Input
                     type="text"
-                    name="userName"
-                    id="userName"
-                    value={formState.userName}
+                    name="username"
+                    id="username"
+                    value={formState.username}
                     onChange={inputChange}
                     placeholder="Please create your Username"
                     />
-                    {errorState.userName.length > 0 ? (<Error>{errorState.userName}</Error>) : null}
+                    {errorState.username.length > 0 ? (<Error>{errorState.username}</Error>) : null}
                 <Label htmlFor="phoneNumber">
                     Enter your Phone Number:
                 </Label>
@@ -182,9 +182,7 @@ export default function SignUpForm () {
                     placeholder="Please create your Password"
                     />
                     {errorState.password.length > 0 ? (<Error>{errorState.password}</Error>) : null} 
-                <Link to={"/plantlist"}>
                     <Button disabled={buttonDisabled}>Create Account</Button>
-                </Link>
             </Form>
         </FormContainer>
     )
